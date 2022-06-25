@@ -5,7 +5,7 @@
 import * as pr from "pareto-runtime"
 
 import * as grammar from "astn-treehandler-api"
-import * as inf from "../interface"
+import * as inf from "../../interface"
 
 import * as at from "astn-treehandler-api"
 

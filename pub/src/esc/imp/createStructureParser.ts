@@ -1,7 +1,7 @@
 import * as pr from "pareto-runtime"
 
-import * as astn from "../interface"
-import * as grammar from "../interface"
+import * as astn from "../../interface"
+import * as grammar from "../../interface"
 
 import { createTreeParser } from "./createTreeParser"
 
