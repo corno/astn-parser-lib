@@ -1,3 +1,5 @@
 export * from "./esc/imp/createStructureParser"
 export * from "./esc/imp/createTreeParser"
+export * from "./esc/imp/printStructureError"
+export * from "./esc/imp/printTreeParserError"
 export * from "./interface"
