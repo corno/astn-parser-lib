@@ -1,5 +1,5 @@
-import { IContentParser } from "./IContentParser";
-import { ITreeHandler, SimpleStringToken } from "astn-treehandler-api";
+import { IContentParser } from "astn-parser-api";
+import { ITreeHandler, SimpleStringToken } from "astn-handlers-api";
 
 
 export type IStructureHandler<EventAnnotation> = {
