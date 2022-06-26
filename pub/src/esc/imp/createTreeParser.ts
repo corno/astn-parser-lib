@@ -4,10 +4,10 @@
 */
 import * as pr from "pareto-runtime"
 
-import * as grammar from "astn-treehandler-api"
+import * as h from "astn-handlers-api"
+import * as papi from "astn-parser-api"
 import * as inf from "../../interface"
 
-import * as at from "astn-treehandler-api"
 
 export type AnnotatedToken<Token, EventAnnotation> = {
     readonly "token": Token
@@ -16,25 +16,25 @@ export type AnnotatedToken<Token, EventAnnotation> = {
 
 interface ITreeParser<EventAnnotation> {
     closeArray(
-        token: grammar.CloseArrayToken<EventAnnotation>,
+        token: h.CloseArrayToken<EventAnnotation>,
     ): void
     closeObject(
-        token: grammar.CloseObjectToken<EventAnnotation>,
+        token: h.CloseObjectToken<EventAnnotation>,
     ): void
     openArray(
-        token: grammar.OpenArrayToken<EventAnnotation>,
+        token: h.OpenArrayToken<EventAnnotation>,
     ): void
     openObject(
-        token: grammar.OpenObjectToken<EventAnnotation>,
+        token: h.OpenObjectToken<EventAnnotation>,
     ): void
     simpleString(
-        token: grammar.SimpleStringToken<EventAnnotation>,
+        token: h.SimpleStringToken<EventAnnotation>,
     ): void
     multilineString(
-        token: grammar.MultilineStringToken<EventAnnotation>,
+        token: h.MultilineStringToken<EventAnnotation>,
     ): void
     taggedUnion(
-        token: grammar.TaggedUnionToken<EventAnnotation>,
+        token: h.TaggedUnionToken<EventAnnotation>,
     ): void
     forceEnd(
         annotation: EventAnnotation
@@ -43,7 +43,7 @@ interface ITreeParser<EventAnnotation> {
 
 
 export type CreateTreeHandlerAndHandleErrorsParams<EventAnnotation> = {
-    handler: at.ITreeHandler<EventAnnotation> | null
+    handler: h.ITreeHandler<EventAnnotation> | null
     onError: ($: {
         error: inf.ParsingError
         annotation: EventAnnotation
@@ -52,9 +52,9 @@ export type CreateTreeHandlerAndHandleErrorsParams<EventAnnotation> = {
 
 export function createTreeParser<EventAnnotation>(
     $p: CreateTreeHandlerAndHandleErrorsParams<EventAnnotation>
-    ): inf.IContentParser<EventAnnotation> {
+    ): papi.IContentParser<EventAnnotation> {
     let done = false
-    const currentTreeHandlers: grammar.ITreeHandler<EventAnnotation>[] = []
+    const currentTreeHandlers: h.ITreeHandler<EventAnnotation>[] = []
     if ($p.handler !== null) {
         currentTreeHandlers.push($p.handler)
     }
@@ -70,14 +70,14 @@ export function createTreeParser<EventAnnotation>(
         }
         type TaggedUnionState =
             | ["expecting option", { }]
-            | ["expecting value", grammar.IRequiredValueHandler<EventAnnotation>[]]
+            | ["expecting value", h.IRequiredValueHandler<EventAnnotation>[]]
 
         type ObjectContext = {
             type:
             | ["dictionary", {}]
             | ["verbose group", {}]
-            readonly objectHandlers: grammar.IObjectHandler<EventAnnotation>[]
-            propertyHandlers: null | grammar.IRequiredValueHandler<EventAnnotation>[]
+            readonly objectHandlers: h.IObjectHandler<EventAnnotation>[]
+            propertyHandlers: null | h.IRequiredValueHandler<EventAnnotation>[]
         }
 
         type ArrayContext = {
@@ -85,11 +85,11 @@ export function createTreeParser<EventAnnotation>(
             | ["list", {}]
             | ["shorthand group", {}]
             foundElements: boolean
-            readonly arrayHandlers: grammar.IArrayHandler<EventAnnotation>[]
+            readonly arrayHandlers: h.IArrayHandler<EventAnnotation>[]
         }
 
         type TaggedUnionContext = {
-            readonly handlers: grammar.ITaggedUnionHandler<EventAnnotation>[]
+            readonly handlers: h.ITaggedUnionHandler<EventAnnotation>[]
             state: TaggedUnionState
         }
 
@@ -224,7 +224,7 @@ export function createTreeParser<EventAnnotation>(
                 }
             }
         }
-        function getValueHandler(annotation: EventAnnotation): grammar.IValueHandler<EventAnnotation>[] {
+        function getValueHandler(annotation: EventAnnotation): h.IValueHandler<EventAnnotation>[] {
             if (state === null) {
                 if (done) {
                     raiseError(["unexpected data after end", {}], annotation)

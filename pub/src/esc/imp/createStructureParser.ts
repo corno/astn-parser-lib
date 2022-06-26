@@ -1,7 +1,8 @@
 import * as pr from "pareto-runtime"
 
 import * as astn from "../../interface"
-import * as grammar from "../../interface"
+import * as papi from "astn-parser-api"
+import * as h from "astn-handlers-api"
 
 import { createTreeParser } from "./createTreeParser"
 
@@ -9,7 +10,7 @@ import * as ap from "astn-parser-api"
 
 export function createStructureParser<EventAnnotation>(
     $p: {
-        handler: grammar.IStructureHandler<EventAnnotation>
+        handler: h.IStructureHandler<EventAnnotation>
         onError: astn.IStructureErrorHandler<EventAnnotation>
     }
 ): ap.IStructureParser<EventAnnotation> {
@@ -25,10 +26,10 @@ export function createStructureParser<EventAnnotation>(
             embeddedSchemaAnnotation: EventAnnotation
         }]
         | ["processing embedded schema", {
-            schemaParser: grammar.IContentParser<EventAnnotation>
+            schemaParser: papi.IContentParser<EventAnnotation>
         }]
         | ["processing body", {
-            bodyParser: grammar.IContentParser<EventAnnotation>
+            bodyParser: papi.IContentParser<EventAnnotation>
         }]
     }
 
