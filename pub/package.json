@@ -3,7 +3,7 @@
   "bin": {},
   "dependencies": {
     "astn-parser-api": "^0.2.1",
-    "astn-treehandler-api": "^0.1.2",
+    "astn-treehandler-api": "^0.1.3",
     "pareto-runtime": "^0.22.0"
   },
   "files": [
