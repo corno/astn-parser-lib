@@ -7,7 +7,7 @@ import * as pr from "pareto-runtime"
 import * as h from "astn-handlers-api"
 import * as papi from "astn-tokenconsumer-api"
 import * as inf from "astn-parser-api"
-import { CreateTreeHandlerAndHandleErrorsParams } from "../.."
+import { CreateTreeHandlerAndHandleErrorsParams } from "astn-parser-api"
 
 
 export type AnnotatedToken<Token, EventAnnotation> = {
