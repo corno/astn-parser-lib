@@ -1,19 +1,19 @@
 import * as pr from "pareto-runtime"
 
-import * as astn from "../../interface"
-import * as papi from "astn-parser-api"
+import * as astn from "astn-parser-api"
+import * as papi from "astn-tokenconsumer-api"
 import * as h from "astn-handlers-api"
 
 import { createTreeParser } from "./createTreeParser"
 
-import * as ap from "astn-parser-api"
+import * as ap from "astn-tokenconsumer-api"
 
 export function createStructureParser<EventAnnotation>(
     $p: {
         handler: h.IStructureHandler<EventAnnotation>
         onError: astn.IStructureErrorHandler<EventAnnotation>
     }
-): ap.IStructureParser<EventAnnotation> {
+): ap.IStructureTokenConsumer<EventAnnotation> {
 
     type RootContext = {
         state:
@@ -26,10 +26,10 @@ export function createStructureParser<EventAnnotation>(
             embeddedSchemaAnnotation: EventAnnotation
         }]
         | ["processing embedded schema", {
-            schemaParser: papi.IContentParser<EventAnnotation>
+            schemaParser: papi.IContentTokenConsumer<EventAnnotation>
         }]
         | ["processing body", {
-            bodyParser: papi.IContentParser<EventAnnotation>
+            bodyParser: papi.IContentTokenConsumer<EventAnnotation>
         }]
     }
 

@@ -5,8 +5,9 @@
 import * as pr from "pareto-runtime"
 
 import * as h from "astn-handlers-api"
-import * as papi from "astn-parser-api"
-import * as inf from "../../interface"
+import * as papi from "astn-tokenconsumer-api"
+import * as inf from "astn-parser-api"
+import { CreateTreeHandlerAndHandleErrorsParams } from "../.."
 
 
 export type AnnotatedToken<Token, EventAnnotation> = {
@@ -42,17 +43,9 @@ interface ITreeParser<EventAnnotation> {
 }
 
 
-export type CreateTreeHandlerAndHandleErrorsParams<EventAnnotation> = {
-    handler: h.ITreeHandler<EventAnnotation> | null
-    onError: ($: {
-        error: inf.ParsingError
-        annotation: EventAnnotation
-    }) => void
-}
-
 export function createTreeParser<EventAnnotation>(
     $p: CreateTreeHandlerAndHandleErrorsParams<EventAnnotation>
-    ): papi.IContentParser<EventAnnotation> {
+    ): papi.IContentTokenConsumer<EventAnnotation> {
     let done = false
     const currentTreeHandlers: h.ITreeHandler<EventAnnotation>[] = []
     if ($p.handler !== null) {
