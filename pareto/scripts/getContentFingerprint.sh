@@ -17,6 +17,6 @@ npm pkg delete content-fingerprint
  #create a shasum of that and then trim to the first 40 characters of that shasum (the rest is filename info, which in this case is: ' -')
 contentfingerprint=$(npm pack --dry-run --json | shasum | cut -c1-40)
 
-npm pkg set content-fingerprint=$contentfingerprint #set fingerprint
 npm pkg set version=$version #restore version
 
+echo $contentfingerprint

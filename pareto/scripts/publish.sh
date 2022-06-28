@@ -21,7 +21,14 @@ $dir/buildAndTest.sh && \
 #####$dir/analyseAllTypeScriptProjects.sh && \
 
 pushd ../$2 && \
-$dir/setContentFingerprint.sh
+beforeFingerprint= $(npm pkg get content-fingerprint)
+afterFingerprint= $($dir/setContentFingerprint.sh)
+echo $beforeFingerprint $afterFingerprint
+if [ $beforeFingerprint = $afterFingerprint ]
+then
+    echo "content is identical"
+    exit 1
+fi
 popd && \
 
 #bump version and store in variable
