@@ -7,6 +7,7 @@
     "astn-tokenconsumer-api": "^0.3.1",
     "pareto-runtime": "^0.22.0"
   },
+  "foo": "bar",
   "files": [
     "dist",
     "data"
