@@ -3,7 +3,7 @@
   "bin": {},
   "dependencies": {
     "astn-handlers-api": "^0.5.1",
-    "astn-parser-api": "^0.6.1",
+    "astn-parser-api": "^0.6.2",
     "astn-tokenconsumer-api": "^0.3.2",
     "pareto-runtime": "^0.22.0"
   },
@@ -27,5 +27,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.5.4",
-  "content-fingerprint": "2526df49ebdb760fa930eeeab224d51aca81b2c7"
+  "content-fingerprint": "f7f8faf5e008219fb45327fd31c48925fa8702c4"
 }
