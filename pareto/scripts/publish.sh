@@ -20,7 +20,9 @@ $dir/buildAndTest.sh && \
 #####$dir/analysePackage.sh && \
 #####$dir/analyseAllTypeScriptProjects.sh && \
 
+pushd ../$2 && \
 $dir/setContentFingerprint.sh
+popd && \
 
 #bump version and store in variable
 pushd ../$2 && \
