@@ -15,5 +15,7 @@
     "npm-check-updates": "^14.1.1",
     "npm-safe-install": "^1.1.0",
     "pareto-ts-validator": "^0.13.2"
-  }
+  },
+  "version": "0.0.0",
+  "content-fingerprint": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
 }
