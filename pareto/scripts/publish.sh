@@ -20,6 +20,8 @@ $dir/buildAndTest.sh && \
 #####$dir/analysePackage.sh && \
 #####$dir/analyseAllTypeScriptProjects.sh && \
 
+$dir/setContentFingerprint.sh
+
 #bump version and store in variable
 pushd ../$2 && \
 newVersion=$(npm version "$1") && \
