@@ -20,19 +20,8 @@ $dir/buildAndTest.sh && \
 #####$dir/analysePackage.sh && \
 #####$dir/analyseAllTypeScriptProjects.sh && \
 
-pushd ../$2 && \
-beforeFingerprint= $(npm pkg get content-fingerprint)
-afterFingerprint= $($dir/setContentFingerprint.sh)
-echo $beforeFingerprint $afterFingerprint
-if [ $beforeFingerprint = $afterFingerprint ]
-then
-    echo "content is identical"
-    exit 1
-fi
-popd && \
-
 #bump version and store in variable
-pushd ../$2 && \
+pushd ../$2 > /dev/null && \
 newVersion=$(npm version "$1") && \
 popd && \
 
@@ -45,6 +34,6 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-pushd ../$2 && \
+pushd ../$2 > /dev/null && \
 npm publish && \
 popd
