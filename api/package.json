@@ -19,9 +19,9 @@
   "name": "astn-parser-api",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/corno/astn-parser-api.git"
+    "url": "git+https://github.com/corno/astn-parser.git"
   },
   "types": "dist/index.d.ts",
   "version": "0.6.2",
-  "content-fingerprint": "34e935be43c691088fac9b51630b6dc2eef603f2"
+  "content-fingerprint": "03ed239f4419d17dbd6003fd1b54ba1d8d3b1159"
 }

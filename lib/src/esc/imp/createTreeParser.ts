@@ -2,7 +2,6 @@
     no-underscore-dangle: "off",
     complexity: off,
 */
-import * as pr from "pareto-runtime"
 
 import * as h from "astn-handlers-api"
 import * as papi from "astn-tokenconsumer-api"
@@ -204,7 +203,7 @@ export function createTreeParser<EventAnnotation>(
                     }
                     case "taggedunion": {
                         if (state.currentContext[1].state[0] !== "expecting value") {
-                            pr.logError("HANDLE UNEXPECTED TAGGED UNION VALUE END")
+                            logError("HANDLE UNEXPECTED TAGGED UNION VALUE END")
                         }
                         closeTaggedUnionImp(
                             annotation,
@@ -213,7 +212,7 @@ export function createTreeParser<EventAnnotation>(
                         break
                     }
                     default:
-                        return pr.au(state.currentContext[0])
+                        return au(state.currentContext[0])
                 }
             }
         }
@@ -258,7 +257,7 @@ export function createTreeParser<EventAnnotation>(
                         }
                     }
                     default:
-                        return pr.au(state.currentContext[0])
+                        return au(state.currentContext[0])
                 }
             }
         }
@@ -321,7 +320,7 @@ export function createTreeParser<EventAnnotation>(
                                     break
                                 }
                                 default:
-                                    pr.au($.state[0])
+                                    au($.state[0])
                             }
                             raiseError(["unexpected end of text", { "still in": ["tagged union", {}] }], endAnnotation)
                             closeTaggedUnionImp(
@@ -332,7 +331,7 @@ export function createTreeParser<EventAnnotation>(
                             break
                         }
                         default:
-                            pr.au(state.currentContext[0])
+                            au(state.currentContext[0])
                     }
                 }
             },
@@ -422,12 +421,12 @@ export function createTreeParser<EventAnnotation>(
                                     break
                                 }
                                 default:
-                                    pr.au($$.state[0])
+                                    au($$.state[0])
                             }
                             break
                         }
                         default:
-                            pr.au(state.currentContext[0])
+                            au(state.currentContext[0])
                     }
                 }
             },
@@ -484,7 +483,7 @@ export function createTreeParser<EventAnnotation>(
                             break
                         }
                         default:
-                            pr.au(state.currentContext[0])
+                            au(state.currentContext[0])
                     }
                 }
                 if (state === null || state.currentContext[0] !== "object") {
@@ -542,7 +541,7 @@ export function createTreeParser<EventAnnotation>(
                             break
                         }
                         default:
-                            pr.au(state.currentContext[0])
+                            au(state.currentContext[0])
                     }
                 }
                 if (state === null || state.currentContext[0] !== "array") {
@@ -558,7 +557,7 @@ export function createTreeParser<EventAnnotation>(
                             break
                         }
                         default:
-                            pr.au($$$.type[0])
+                            au($$$.type[0])
                     }
                     $$$.arrayHandlers.forEach(($) => {
                         $.onEnd({
@@ -624,12 +623,12 @@ export function createTreeParser<EventAnnotation>(
                             parser.taggedUnion(createToken({ }))
                             break
                         default:
-                            pr.au(punctuation.type[0])
+                            au(punctuation.type[0])
                     }
                     break
                 }
                 case "simple string": {
-                    pr.cc(token.token[1], ($) => {
+                    cc(token.token[1], ($) => {
                         parser.simpleString(
                             {
                                 annotation: token.annotation,
@@ -644,7 +643,7 @@ export function createTreeParser<EventAnnotation>(
                     break
                 }
                 case "multiline string": {
-                    pr.cc(token.token[1], ($) => {
+                    cc(token.token[1], ($) => {
                         parser.multilineString(
                             {
                                 annotation: token.annotation,
@@ -658,7 +657,7 @@ export function createTreeParser<EventAnnotation>(
                 }
 
                 default:
-                    pr.au(token.token[0])
+                    au(token.token[0])
             }
         },
         onEnd: (annotation) => {

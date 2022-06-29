@@ -1,5 +1,3 @@
-import * as pr from "pareto-runtime"
-
 import * as astn from "astn-parser-api"
 
 import { printStructureError } from "./printStructureError"
@@ -17,6 +15,6 @@ export function printParsingError(error: astn.ParsingError): string {
             return printStructureError($)
         }
         default:
-            return pr.au(error[0])
+            return au(error[0])
     }
 }

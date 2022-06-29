@@ -1,4 +1,3 @@
-import * as pr from "pareto-runtime"
 
 import * as astn from "astn-parser-api"
 import * as papi from "astn-tokenconsumer-api"
@@ -68,7 +67,7 @@ export function createStructureParser<EventAnnotation>(
                     break
                 }
                 default:
-                    pr.au(rootContext.state[0])
+                    au(rootContext.state[0])
             }
         },
         onToken: ($) => {
@@ -89,7 +88,7 @@ export function createStructureParser<EventAnnotation>(
                             break
                         }
                         case "content": {
-                            pr.cc($.token[1], ($) => {
+                            cc($.token[1], ($) => {
                                 $p.handler.onNoInternalSchema({})
                                 const bp = $p.handler.onBody()
                                 rootContext.state = ["processing body", {
@@ -103,7 +102,7 @@ export function createStructureParser<EventAnnotation>(
                             break
                         }
                         default:
-                            pr.au($.token[0])
+                            au($.token[0])
                     }
                     break
                 }
@@ -118,16 +117,16 @@ export function createStructureParser<EventAnnotation>(
                             break
                         }
                         case "content": {
-                            pr.cc($.token[1], ($) => {
+                            cc($.token[1], ($) => {
                                 switch ($[0]) {
                                     case "structural": {
-                                        pr.cc($[1], ($) => {
+                                        cc($[1], ($) => {
                                             raiseError(["expected a schema reference or an embedded schema", {}])
                                         })
                                         break
                                     }
                                     case "simple string": {
-                                        pr.cc($[1], ($) => {
+                                        cc($[1], ($) => {
                                             $p.handler.onSchemaReference({
                                                 headerAnnotation: headerAnnotation,
                                                 token: {
@@ -142,20 +141,20 @@ export function createStructureParser<EventAnnotation>(
                                         break
                                     }
                                     case "multiline string": {
-                                        pr.cc($[1], ($) => {
+                                        cc($[1], ($) => {
                                             raiseError(["expected an embedded schema", {}])
                                         })
                                         break
                                     }
                                     default:
-                                        pr.au($[0])
+                                        au($[0])
                                 }
                             })
                             break
                         }
 
                         default:
-                            pr.au($.token[0])
+                            au($.token[0])
                     }
                     break
                 }
@@ -213,7 +212,7 @@ export function createStructureParser<EventAnnotation>(
                     break
                 }
                 default:
-                    pr.au(rootContext.state[0])
+                    au(rootContext.state[0])
             }
         },
     }
