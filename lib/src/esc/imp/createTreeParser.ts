@@ -1,7 +1,4 @@
-/* eslint
-    no-underscore-dangle: "off",
-    complexity: off,
-*/
+import * as pl from "pareto-lang-lib"
 
 import * as h from "astn-handlers-api"
 import * as papi from "astn-tokenconsumer-api"
@@ -203,7 +200,7 @@ export function createTreeParser<EventAnnotation>(
                     }
                     case "taggedunion": {
                         if (state.currentContext[1].state[0] !== "expecting value") {
-                            logError("HANDLE UNEXPECTED TAGGED UNION VALUE END")
+                            throw new Error("HANDLE UNEXPECTED TAGGED UNION VALUE END")
                         }
                         closeTaggedUnionImp(
                             annotation,
@@ -212,7 +209,7 @@ export function createTreeParser<EventAnnotation>(
                         break
                     }
                     default:
-                        return au(state.currentContext[0])
+                        return pl.au(state.currentContext[0])
                 }
             }
         }
@@ -257,7 +254,7 @@ export function createTreeParser<EventAnnotation>(
                         }
                     }
                     default:
-                        return au(state.currentContext[0])
+                        return pl.au(state.currentContext[0])
                 }
             }
         }
@@ -320,7 +317,7 @@ export function createTreeParser<EventAnnotation>(
                                     break
                                 }
                                 default:
-                                    au($.state[0])
+                                    pl.au($.state[0])
                             }
                             raiseError(["unexpected end of text", { "still in": ["tagged union", {}] }], endAnnotation)
                             closeTaggedUnionImp(
@@ -331,7 +328,7 @@ export function createTreeParser<EventAnnotation>(
                             break
                         }
                         default:
-                            au(state.currentContext[0])
+                            pl.au(state.currentContext[0])
                     }
                 }
             },
@@ -421,12 +418,12 @@ export function createTreeParser<EventAnnotation>(
                                     break
                                 }
                                 default:
-                                    au($$.state[0])
+                                    pl.au($$.state[0])
                             }
                             break
                         }
                         default:
-                            au(state.currentContext[0])
+                            pl.au(state.currentContext[0])
                     }
                 }
             },
@@ -483,7 +480,7 @@ export function createTreeParser<EventAnnotation>(
                             break
                         }
                         default:
-                            au(state.currentContext[0])
+                            pl.au(state.currentContext[0])
                     }
                 }
                 if (state === null || state.currentContext[0] !== "object") {
@@ -541,7 +538,7 @@ export function createTreeParser<EventAnnotation>(
                             break
                         }
                         default:
-                            au(state.currentContext[0])
+                            pl.au(state.currentContext[0])
                     }
                 }
                 if (state === null || state.currentContext[0] !== "array") {
@@ -557,7 +554,7 @@ export function createTreeParser<EventAnnotation>(
                             break
                         }
                         default:
-                            au($$$.type[0])
+                            pl.au($$$.type[0])
                     }
                     $$$.arrayHandlers.forEach(($) => {
                         $.onEnd({
@@ -623,12 +620,12 @@ export function createTreeParser<EventAnnotation>(
                             parser.taggedUnion(createToken({ }))
                             break
                         default:
-                            au(punctuation.type[0])
+                            pl.au(punctuation.type[0])
                     }
                     break
                 }
                 case "simple string": {
-                    cc(token.token[1], ($) => {
+                    pl.cc(token.token[1], ($) => {
                         parser.simpleString(
                             {
                                 annotation: token.annotation,
@@ -643,7 +640,7 @@ export function createTreeParser<EventAnnotation>(
                     break
                 }
                 case "multiline string": {
-                    cc(token.token[1], ($) => {
+                    pl.cc(token.token[1], ($) => {
                         parser.multilineString(
                             {
                                 annotation: token.annotation,
@@ -657,7 +654,7 @@ export function createTreeParser<EventAnnotation>(
                 }
 
                 default:
-                    au(token.token[0])
+                    pl.au(token.token[0])
             }
         },
         onEnd: (annotation) => {

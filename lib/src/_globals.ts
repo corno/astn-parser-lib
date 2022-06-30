@@ -38,7 +38,6 @@ interface String {
 interface Error {
 
 }
-//export const x = 5
 
 declare function isNaN(v: any): boolean
 
@@ -47,31 +46,3 @@ interface ErrorConstructor {
 }
 
 declare let Error: ErrorConstructor;
-
-
-
-/**
- * au means 'assert unreachable'. Used in the 'default' clause of switch statements to ensure that
- * all possible cases have been handled
- * @param _x 
- */
-function au<RT>(_x: never): RT {
-    throw new Error("unreachable")
-}
-
-/**
- * cc means 'change context'. It creates a new scope in which a variable name can be used again
- * (usually '$', a variable name that indicates the current context in pareto)
- * 
- * @param input 
- * @param callback 
- * @returns 
- */
-function cc<T, RT>(input: T, callback: (output: T) => RT): RT {
-    return callback(input)
-}
-
-function logError(message: string) {
-    // @ts-ignore: Unreachable code error
-    console.log(error)
-}

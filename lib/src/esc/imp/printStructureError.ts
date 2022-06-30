@@ -1,3 +1,5 @@
+import * as pl from "pareto-lang-lib"
+
 import * as astn from "astn-parser-api"
 
 export function printStructureError($$: astn.StructureError): string {
@@ -18,6 +20,6 @@ export function printStructureError($$: astn.StructureError): string {
             return `unexpected data after end`
         }
         default:
-            return au($$[0])
+            return pl.au($$[0])
     }
 }

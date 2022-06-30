@@ -1,3 +1,5 @@
+import * as pl from "pareto-lang-lib"
+
 import * as astn from "astn-parser-api"
 
 export function printTreeParserError(error: astn.TreeParserError): string {
@@ -37,6 +39,6 @@ export function printTreeParserError(error: astn.TreeParserError): string {
             return error[0]
         }
         default:
-            return au(error[0])
+            return pl.au(error[0])
     }
 }
