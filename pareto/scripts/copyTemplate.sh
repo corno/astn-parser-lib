@@ -5,13 +5,21 @@ cp -R ./node_modules/pareto-ts-validator-lib/data/projectTemplate/. .. \
 #npm messes with .gitignore, that's why I need to handle it separately
 cp ./node_modules/pareto-ts-validator-lib/data/gitignore ../.gitignore \
 
-parts=("lib" "api" "bin" "test")
+
+
+if [ -d ../$api ]
+then
+    cp ./node_modules/pareto-ts-validator-lib/data/tsconfig.json ../api
+    cp ./node_modules/pareto-ts-validator-lib/data/_apiGlobals.ts ../api/src
+fi
+
+parts=("lib" "bin" "test")
 for part in "${parts[@]}"
 do
     if [ -d ../$part ]
     then
         cp ./node_modules/pareto-ts-validator-lib/data/tsconfig.json ../$part
-        cp ./node_modules/pareto-ts-validator-lib/data/_globals.ts ../$part/src
+        cp ./node_modules/pareto-ts-validator-lib/data/_libGlobals.ts ../$part/src
     fi
 
 done
