@@ -2,7 +2,7 @@
   "author": "Corno",
   "bin": {},
   "dependencies": {
-    "astn-handlers-api": "^0.5.4"
+    "astn-handlers-api": "^0.6.0"
   },
   "files": [
     "dist",
@@ -23,5 +23,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.7.0",
-  "content-fingerprint": "7ced0742fda9f87237e71946d0c7ee2fa068a23f"
+  "content-fingerprint": "46aad39e5332c9617aa166ebf57a1e9c57797766"
 }

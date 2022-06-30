@@ -7,6 +7,9 @@ git push && \
 #validate that everything is committed and pushed (to make sure we're not messing with open work with updatePackage)
 git diff --exit-code && git log origin/master..master --exit-code && \
 
+#make sure latest packages are installed
+$dir/updatePackage.sh ../$2 && \
+
 #buildAndTest
 $dir/buildAndTest.sh && \
 
