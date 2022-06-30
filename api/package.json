@@ -2,7 +2,7 @@
   "author": "Corno",
   "bin": {},
   "dependencies": {
-    "astn-handlers-api": "^0.5.1"
+    "astn-handlers-api": "^0.5.4"
   },
   "files": [
     "dist",
