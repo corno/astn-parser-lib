@@ -3,7 +3,7 @@
   "bin": {},
   "dependencies": {
     "astn-handlers-api": "^0.5.1",
-    "astn-parser-api": "^0.6.2",
+    "astn-parser-api": "^0.6.3",
     "pareto-lang-lib": "^0.2.0"
   },
   "foo": "bar",
