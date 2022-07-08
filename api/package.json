@@ -22,6 +22,6 @@
     "url": "git+https://github.com/corno/astn-parser.git"
   },
   "types": "dist/index.d.ts",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "content-fingerprint": "692d4e2c34f08fc56de8676f70c6611aab9073fa"
 }
