@@ -4,7 +4,7 @@ import * as lib from "../../../../lib"
 import * as pr from "pareto-runtime"
 
 import * as fslib from "pareto-filesystem-lib"
-import * as tok from "astn-tokenizer-lib"
+import * as toklib from "astn-tokenizer-lib"
 import * as testlib from "pareto-test-lib"
 import * as asyncLib from "pareto-async-lib"
 import * as diffLib from "pareto-diff-lib"
@@ -22,19 +22,23 @@ pr.runProgram(
         const diff = diffLib.init()
 
 
-        const parserLib = lib.init()
-        const tokLib = tok.init()
+        const tok = toklib.init()
 
         const fs = fslib.init()
+
+        const hfs = fs.createHandledFilesystem(
+            ($) => {
+                throw new Error(`FS ERROR: ${$.path}`)
+            }
+        )
 
 
         getTests(
             path,
-            async.rewrite,
-            async.tuple2,
-            fs.directory,
-            fs.file,
-            tokLib.createTokenizer,
+            async,
+            hfs,
+            lib.init(),
+            tok.createTokenizer,
             testlib.init(
                 fs,
                 diff,
