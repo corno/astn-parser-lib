@@ -4,7 +4,10 @@ import * as afAPI from "pareto-async-functions-api"
 
 import { IHandledFilesystem } from "pareto-handledfilesystem-api"
 
-export type TestSet = pa.IReadonlyDictionary<string>
+export type TestSet = {
+    path: string
+    tests: pa.IReadonlyDictionary<string>
+}
 
 export type JSONTestSuite = {
     test_parsing: {
@@ -24,15 +27,23 @@ export function testJSONTestSuite(
     function readDir(
         relativePath: string,
     ): asyncAPI.IAsync<TestSet> {
-        return fs.directory(
-            [path, relativePath],
-            (data) => {
-                return fs.file(
-                    [data.path],
-                    (fileData) => {
-                        return af.value(fileData)
-                    }
-                )
+        return af.rewrite(
+            fs.directory(
+                [path, relativePath],
+                (data) => {
+                    return fs.file(
+                        [data.path],
+                        (fileData) => {
+                            return af.value(fileData)
+                        }
+                    )
+                }
+            ),
+            ($) => {
+                return {
+                    path: `${path}/${relativePath}`,
+                    tests: $,
+                }
             }
         )
     }

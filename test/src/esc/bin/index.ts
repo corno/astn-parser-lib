@@ -1,5 +1,6 @@
 
 import * as lib from "../../../../lib"
+import * as api from "astn-parser-api"
 
 import * as pr from "pareto-runtime"
 
@@ -17,6 +18,8 @@ pr.runProgram(
             throw new Error("missing path")
         }
         const path = $.argument
+
+        const parser = lib.init()
 
         const async = asyncLib.init()
         const diff = diffLib.init()
@@ -37,13 +40,8 @@ pr.runProgram(
             path,
             async,
             hfs,
-            lib.init(),
             tok.createTokenizer,
-            testlib.init(
-                fs,
-                diff,
-                async,
-            ).validateFile,
+            parser.createTreeParser,
         ).execute(($ => {
             testlib.init(
                 fs,
