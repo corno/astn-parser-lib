@@ -2,6 +2,7 @@
 import * as api from "astn-parser-api"
 
 import * as pl from "pareto-lib-core"
+import * as pa from "pareto-api-core"
 import * as tok from "astn-tokenizer-api"
 
 import * as pr from "pareto-runtime"
@@ -9,7 +10,6 @@ import * as pr from "pareto-runtime"
 
 import { IHandledFilesystem } from "pareto-handledfilesystem-api"
 import * as ta from "pareto-test-api"
-import * as asyncAPI from "pareto-async-api"
 import * as afAPI from "pareto-async-functions-api"
 import { createDummyRequiredValueHandler } from "./dummyHandlers"
 import { testJSONTestSuite, TestSet } from "./JSONTestSuite/JSONTestSuite"
@@ -21,7 +21,7 @@ export function getTests(
     fs: IHandledFilesystem,
     createTokenizer: tok.CreateTokenizer,
     createTreeParser: api.CreateTreeParser,
-): asyncAPI.IAsync<ta.TTestResult> {
+): pa.IAsync<ta.TTestResult> {
 
     return af.rewrite(
 

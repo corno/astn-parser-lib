@@ -1,5 +1,4 @@
 import * as pa from "pareto-api-core"
-import * as asyncAPI from "pareto-async-api"
 import * as afAPI from "pareto-async-functions-api"
 
 import { IHandledFilesystem } from "pareto-handledfilesystem-api"
@@ -22,11 +21,11 @@ export function testJSONTestSuite(
     path: string,
     fs: IHandledFilesystem,
     af: afAPI.API,
-): asyncAPI.IAsync<JSONTestSuite> {
+): pa.IAsync<JSONTestSuite> {
 
     function readDir(
         relativePath: string,
-    ): asyncAPI.IAsync<TestSet> {
+    ): pa.IAsync<TestSet> {
         return af.rewrite(
             fs.directory(
                 [path, relativePath],

@@ -4,6 +4,7 @@
     "astn-parser-api": "^0.8.0",
     "astn-tokenizer-api": "^0.2.0",
     "astn-tokenizer-lib": "^0.6.0",
+    "pareto-async-functions-lib": "^0.13.0",
     "pareto-diff-lib": "^0.3.0",
     "pareto-filesystem-res": "^0.25.0",
     "pareto-handledfilesystem-api": "^0.8.0",
