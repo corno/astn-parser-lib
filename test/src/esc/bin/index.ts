@@ -7,7 +7,6 @@ import * as pr from "pareto-runtime"
 import * as fslib from "pareto-filesystem-lib"
 import * as toklib from "astn-tokenizer-lib"
 import * as testlib from "pareto-test-lib"
-import * as asyncLib from "pareto-async-lib"
 import * as diffLib from "pareto-diff-lib"
 import { getTests } from "../../imp/getTests"
 

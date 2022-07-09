@@ -1,7 +1,7 @@
 
 import * as api from "astn-parser-api"
 
-import * as pl from "pareto-lang-lib"
+import * as pl from "pareto-lib-core"
 import * as tok from "astn-tokenizer-api"
 
 import * as pr from "pareto-runtime"

@@ -3,13 +3,11 @@
     "astn-handlers-api": "^0.6.0",
     "astn-parser-api": "^0.8.0",
     "astn-tokenizer-api": "^0.2.0",
-    "astn-tokenizer-lib": "^0.5.0",
-    "pareto-async-lib": "^0.9.0",
-    "pareto-diff-lib": "^0.2.0",
-    "pareto-filesystem-lib": "^0.22.0",
-    "pareto-handledfilesystem-api": "^0.7.0",
-    "pareto-lang-lib": "^0.8.0",
-    "pareto-runtime": "^0.24.0",
-    "pareto-test-lib": "^0.16.0"
+    "astn-tokenizer-lib": "^0.6.0",
+    "pareto-diff-lib": "^0.3.0",
+    "pareto-filesystem-res": "^0.25.0",
+    "pareto-handledfilesystem-api": "^0.8.0",
+    "pareto-runtime": "^0.25.0",
+    "pareto-test-lib": "^0.20.0"
   }
 }
