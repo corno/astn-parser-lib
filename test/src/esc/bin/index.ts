@@ -1,8 +1,7 @@
 
 import * as lib from "../../../../lib"
-import * as api from "astn-parser-api"
 
-import * as pr from "pareto-runtime"
+import * as pb from "pareto-bin-core"
 
 import * as fslib from "pareto-filesystem-res"
 import * as toklib from "astn-tokenizer-lib"
@@ -12,7 +11,7 @@ import * as asyncLib from "pareto-async-functions-lib"
 import { getTests } from "../../imp/getTests"
 
 
-pr.runProgram(
+pb.runProgram(
     ($) => {
         if ($.argument === undefined) {
             throw new Error("missing path")
@@ -54,7 +53,9 @@ pr.runProgram(
 
                 },
                 (str) => {
-                    pr.log(str)
+                    const out = pb.createStdOut()
+                    out.write(str)
+                    out.write(`\n`)
                 }
             )
         }))

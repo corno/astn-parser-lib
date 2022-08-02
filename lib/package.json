@@ -4,7 +4,7 @@
   "dependencies": {
     "astn-handlers-api": "^0.6.0",
     "astn-parser-api": "^0.8.0",
-    "pareto-lib-core": "^0.5.0"
+    "pareto-lib-core": "^0.6.0"
   },
   "foo": "bar",
   "files": [
@@ -26,5 +26,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.12.0",
-  "content-fingerprint": "7db4c4d8e02fd08946c0eb23933d89912d7ec039"
+  "content-fingerprint": "cfee65d0f6c34880647cca744838634fa2e1b31b"
 }

@@ -5,9 +5,6 @@ import * as pl from "pareto-lib-core"
 import * as pa from "pareto-api-core"
 import * as tok from "astn-tokenizer-api"
 
-import * as pr from "pareto-runtime"
-
-
 import { IHandledFilesystem } from "pareto-handledfilesystem-api"
 import * as ta from "pareto-test-api"
 import * as afAPI from "pareto-async-functions-api"
@@ -49,7 +46,7 @@ export function getTests(
                             },
                             onError: ($) => {
                                 if (!expectErrors) {
-                                    pl.logDebugMessage(`>>> ${pr.JSONstringify($)}`)
+                                    pl.logDebugMessage(`>>> ${JSON.stringify($, undefined, `\t`)}`)
                                 }
                                 foundErrors = true
                             }

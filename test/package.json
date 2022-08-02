@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "astn-parser-api": "^0.8.0",
-    "astn-tokenizer-lib": "^0.9.0",
-    "pareto-async-functions-lib": "^0.14.0",
+    "astn-tokenizer-lib": "^0.10.0",
+    "pareto-async-functions-lib": "^0.16.0",
+    "pareto-bin-core": "^0.0.2",
     "pareto-diff-lib": "^0.3.0",
-    "pareto-filesystem-res": "^0.25.0",
-    "pareto-runtime": "^0.25.0",
-    "pareto-test-lib": "^0.21.0"
+    "pareto-filesystem-res": "^0.26.0",
+    "pareto-test-lib": "^0.23.0"
   }
 }

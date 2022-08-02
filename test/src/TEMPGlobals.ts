@@ -17,3 +17,9 @@ interface ErrorConstructor {
 }
 
 declare let Error: ErrorConstructor;
+
+interface JSON {
+    stringify(data: any, x: undefined, indent: string): string
+}
+
+declare let JSON: JSON
